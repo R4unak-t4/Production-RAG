@@ -1,0 +1,296 @@
+/* LEROY AI // BLOOMBERG TERMINAL DESIGN SYSTEM */
+:root {
+  --bg-dark: #07090e;
+  --panel-bg: #0d121d;
+  --panel-header-bg: #121927;
+  --border-color: #1e2a3e;
+  --border-active: #ff9f0a;
+  
+  --amber-gold: #ff9f0a;
+  --amber-glow: rgba(255, 159, 10, 0.15);
+  --neon-cyan: #00f0ff;
+  --neon-cyan-glow: rgba(0, 240, 255, 0.15);
+  --matrix-green: #00ff87;
+  --matrix-green-glow: rgba(0, 255, 135, 0.15);
+  --crimson-red: #ff3b30;
+  
+  --text-main: #e2e8f0;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Bloomberg Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080b12;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--amber-gold);
+}
+
+/* Ticker Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-marquee {
+  display: flex;
+  white-space: nowrap;
+  width: 200%;
+  animation: marquee 30s linear infinite;
+}
+
+.ticker-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Panel Containers */
+.bb-panel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.bb-panel-header {
+  background-color: var(--panel-header-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+}
+
+.bb-panel-body {
+  padding: 14px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Bloomberg Buttons */
+.bb-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 3px;
+  border: 1px solid var(--amber-gold);
+  background-color: rgba(255, 159, 10, 0.1);
+  color: var(--amber-gold);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bb-btn:hover {
+  background-color: var(--amber-gold);
+  color: #000;
+  box-shadow: 0 0 12px rgba(255, 159, 10, 0.4);
+}
+
+.bb-btn-cyan {
+  border-color: var(--neon-cyan);
+  background-color: rgba(0, 240, 255, 0.1);
+  color: var(--neon-cyan);
+}
+.bb-btn-cyan:hover {
+  background-color: var(--neon-cyan);
+  color: #000;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
+
+.bb-btn-green {
+  border-color: var(--matrix-green);
+  background-color: rgba(0, 255, 135, 0.1);
+  color: var(--matrix-green);
+}
+.bb-btn-green:hover {
+  background-color: var(--matrix-green);
+  color: #000;
+  box-shadow: 0 0 12px rgba(0, 255, 135, 0.4);
+}
+
+/* Inputs & Command Line */
+.bb-input {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background-color: #080c14;
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.bb-input:focus {
+  border-color: var(--amber-gold);
+  box-shadow: 0 0 8px rgba(255, 159, 10, 0.2);
+}
+
+/* Terminal Tables */
+.bb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.bb-table th {
+  background-color: #101726;
+  color: var(--text-dim);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.bb-table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(30, 42, 62, 0.5);
+}
+
+.bb-table tr:hover {
+  background-color: rgba(255, 159, 10, 0.04);
+}
+
+/* Status Badges */
+.bb-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.bb-badge-gold {
+  background-color: rgba(255, 159, 10, 0.15);
+  color: var(--amber-gold);
+  border: 1px solid var(--amber-gold);
+}
+
+.bb-badge-green {
+  background-color: rgba(0, 255, 135, 0.15);
+  color: var(--matrix-green);
+  border: 1px solid var(--matrix-green);
+}
+
+.bb-badge-cyan {
+  background-color: rgba(0, 240, 255, 0.15);
+  color: var(--neon-cyan);
+  border: 1px solid var(--neon-cyan);
+}
+
+.bb-badge-red {
+  background-color: rgba(255, 59, 48, 0.15);
+  color: var(--crimson-red);
+  border: 1px solid var(--crimson-red);
+}
+
+/* Live Terminal Telemetry Glow */
+.glow-amber {
+  text-shadow: 0 0 8px rgba(255, 159, 10, 0.5);
+}
+.glow-green {
+  text-shadow: 0 0 8px rgba(0, 255, 135, 0.5);
+}
+.glow-cyan {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+/* Markdown Formatting Styles for Chat Messages */
+.bb-markdown h1, .bb-markdown h2, .bb-markdown h3, .bb-markdown h4 {
+  color: var(--amber-gold);
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 4px;
+}
+
+.bb-markdown h3 {
+  font-size: 14px;
+}
+
+.bb-markdown h4 {
+  font-size: 12px;
+  color: var(--neon-cyan);
+}
+
+.bb-markdown p {
+  margin-bottom: 8px;
+}
+
+.bb-markdown strong {
+  color: var(--amber-gold);
+  font-weight: 700;
+}
+
+.bb-markdown ul, .bb-markdown ol {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.bb-markdown li {
+  margin-bottom: 4px;
+  color: var(--text-main);
+}
+
+.bb-markdown code {
+  background-color: #101726;
+  border: 1px solid var(--border-color);
+  color: var(--matrix-green);
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.bb-markdown blockquote {
+  border-left: 3px solid var(--amber-gold);
+  background-color: rgba(255, 159, 10, 0.05);
+  padding: 6px 12px;
+  margin: 8px 0;
+  color: var(--text-dim);
+}
